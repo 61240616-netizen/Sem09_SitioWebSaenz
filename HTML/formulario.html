@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cotizador — LogísticaExpress</title>
+  <link rel="stylesheet" href="../CSS/formulario.css">
+  <link rel="stylesheet" href="../CSS/seguimiento.css">
+</head>
+<body>
+
+  <!-- ENCABEZADO -->
+  <header>
+    <a href="../index.html" class="logo">LogísticaExpress</a>
+    <nav>
+      <ul>
+        <li><a href="../index.html">Inicio</a></li>
+        <li><a href="servicios.html">Servicios</a></li>
+        <li class="dropdown">
+          <a href="requisitos.html">Cómo funciona</a>
+          <ul class="dropdown-menu">
+            <li><a href="requisitos.html#pasos">Pasos para enviar</a></li>
+            <li><a href="requisitos.html#requisitos">Requisitos por tipo</a></li>
+            <li><a href="requisitos.html#prohibidos">Artículos prohibidos</a></li>
+          </ul>
+        </li>
+        <li><a href="formulario.html" class="active">Cotizador</a></li>
+        <li><a href="contacto.html">Ubicación</a></li>
+        <li><a href="consulta.html">Mis Cotizaciones</a></li>
+        <li><a href="pago.html">Pagar</a></li>
+        <li><a href="#" id="btn-cerrar-sesion" class="btn-login-nav">Cerrar Sesión</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+    <section class="page-header">
+      <h1>Cotizador de Envíos</h1>
+      <p class="subtitulo">Calcula el costo de tu paquete al instante, con peso real y volumétrico.</p>
+    </section>
+
+    <div class="cotizador-wrapper">
+      <section class="form-card">
+        <form class="cotizador-form" id="form-cotizador" novalidate>
+          <div class="form-group">
+            <label for="origen">Origen <span class="req">*</span></label>
+            <select id="origen" name="origen" required></select>
+          </div>
+
+          <div class="form-group">
+            <label for="destino">Destino <span class="req">*</span></label>
+            <select id="destino" name="destino" required></select>
+          </div>
+
+          <div class="form-group">
+            <label for="peso">Peso real (kg) <span class="req">*</span></label>
+            <input type="number" id="peso" name="peso_kg" min="0.1" max="9999" step="0.1" required placeholder="Ej: 2">
+          </div>
+
+          <fieldset class="medidas">
+            <legend>Medidas de la caja (cm) <span class="req">*</span></legend>
+            <div class="medidas-grid">
+              <div class="form-group">
+                <label for="largo">Largo</label>
+                <input type="number" id="largo" name="largo_cm" min="1" max="9999" step="0.1" required placeholder="40">
+              </div>
+              <div class="form-group">
+                <label for="ancho">Ancho</label>
+                <input type="number" id="ancho" name="ancho_cm" min="1" max="9999" step="0.1" required placeholder="30">
+              </div>
+              <div class="form-group">
+                <label for="alto">Alto</label>
+                <input type="number" id="alto" name="alto_cm" min="1" max="9999" step="0.1" required placeholder="30">
+              </div>
+            </div>
+          </fieldset>
+
+          <!-- COTIZACIÓN EN VIVO: se actualiza con cada tecla -->
+          <div class="cotizacion-vivo" aria-live="polite">
+            <dl class="desglose">
+              <div><dt>Peso real</dt><dd id="det-real">—</dd></div>
+              <div><dt>Peso volumétrico</dt><dd id="det-volumetrico">—</dd></div>
+              <div><dt>Peso facturable</dt><dd id="det-facturable">—</dd></div>
+            </dl>
+            <p class="monto-linea">Monto estimado:
+              <output id="monto-estimado" for="peso largo ancho alto">S/ 0.00</output>
+            </p>
+            <p class="regla">S/ 12.00 base + S/ 4.00 por kg facturable. Peso volumétrico = largo × ancho × alto ÷ 5000.</p>
+          </div>
+
+          <p id="error-cotizador" class="error-form" role="alert"></p>
+
+          <button type="submit" class="btn-cotizar" id="btn-cotizar">Cotizar y registrar envío</button>
+        </form>
+
+        <div id="resultado-cotizacion" class="confirmacion-cotizacion" style="display: none;"></div>
+
+        <!-- ESTADO ANIMADO DEL ENVÍO (aparece al cotizar) -->
+        <div id="timeline-cotizacion" class="timeline-wrapper" style="display: none;">
+          <p class="timeline-title">Estado de tu nuevo envío:</p>
+          <div id="seguimiento-cotizacion"></div>
+        </div>
+      </section>
+
+      <aside class="info-sidebar">
+        <div class="sidebar-box">
+          <h3>¿Necesitas ayuda personalizada?</h3>
+          <p>Escríbenos por WhatsApp para cotizaciones corporativas o carga pesada.</p>
+          <a href="https://web.whatsapp.com/" target="_blank" rel="noopener" class="btn-whatsapp">Contactar por WhatsApp</a>
+        </div>
+      </aside>
+    </div>
+  </main>
+
+  <footer>
+    <div class="footer-container">
+      <div class="footer-col">
+        <h3>LogísticaExpress</h3>
+        <p>Soluciones logísticas en la región San Martín y a nivel nacional.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Navegación</h4>
+        <ul>
+          <li><a href="../index.html">Inicio</a></li>
+          <li><a href="servicios.html">Servicios</a></li>
+          <li><a href="contacto.html">Ubicación</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; 2026 LogísticaExpress — Proyecto de Diseño Web.</p>
+    </div>
+  </footer>
+
+  <script type="module" src="../JS/registro/registro.js"></script>
+</body>
+</html>

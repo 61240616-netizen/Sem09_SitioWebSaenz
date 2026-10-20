@@ -1,0 +1,526 @@
+/* ==================== VARIABLES GLOBAL Y RESET ==================== */
+:root {
+  --amarillo-express: #ffb800;
+  --amarillo-hover: #e0a200;
+  --azul-express: #0d2c6c;
+  --azul-hover: #071c48;
+  --gris-fondo: #f8fafc;
+  --texto-oscuro: #0f172a;
+  --texto-mutado: #64748b;
+  --blanco: #ffffff;
+  --borde: #e2e8f0;
+  --sombra: 0 10px 30px -5px rgba(13, 44, 108, 0.08);
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: 'Plus Jakarta Sans', 'Segoe UI', Arial, sans-serif;
+  color: var(--texto-oscuro);
+  background-color: var(--gris-fondo);
+  line-height: 1.6;
+}
+
+h1, h2, h3, h4 {
+  font-family: 'Poppins', 'Segoe UI', Arial, sans-serif;
+}
+
+/* ==================== ENCABEZADO Y NAVEGACIÓN ==================== */
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  /* EFECTO 1: Degradado en el encabezado */
+  background: linear-gradient(135deg, var(--azul-express) 0%, var(--azul-hover) 100%);
+  padding: 0 5%;
+  height: 75px;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+}
+
+.logo {
+  font-size: 1.5rem;
+  font-weight: 800;
+  color: var(--blanco);
+  text-decoration: none;
+}
+
+header nav ul {
+  list-style: none;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+/* TRANSICIÓN 3: Color en el menú */
+header nav a {
+  color: var(--blanco);
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 0.9rem;
+  padding: 10px 16px;
+  border-radius: 8px;
+  transition: color 0.3s ease, background-color 0.3s ease;
+}
+
+header nav a:hover,
+header nav a.active {
+  background-color: rgba(255, 255, 255, 0.12);
+  color: var(--amarillo-express);
+}
+
+/* Menú Desplegable (Dropdown) */
+.dropdown {
+  position: relative;
+}
+
+.dropdown-menu {
+  display: none;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  background-color: var(--azul-express);
+  min-width: 240px;
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+  border-radius: 0 0 12px 12px;
+  overflow: hidden;
+  border-top: 3px solid var(--amarillo-express);
+  list-style: none;
+  padding: 6px 0;
+}
+
+.dropdown:hover .dropdown-menu {
+  display: block;
+}
+
+.dropdown-menu a {
+  display: block;
+  padding: 12px 20px;
+  border-radius: 0;
+  font-size: 0.88rem;
+  color: var(--blanco);
+}
+
+.dropdown-menu a:hover {
+  background-color: var(--azul-hover);
+  color: var(--amarillo-express);
+}
+
+/* ==================== ESTRUCTURA PRINCIPAL ==================== */
+main {
+  padding: 50px 20px;
+  max-width: 1150px;
+  margin: 0 auto;
+}
+
+.page-header {
+  text-align: center;
+  margin-bottom: 50px;
+}
+
+.page-header h1 {
+  font-size: 2.3rem;
+  color: var(--azul-express);
+  margin-bottom: 10px;
+}
+
+.subtitulo {
+  color: var(--texto-mutado);
+  font-size: 1.05rem;
+}
+
+.seccion-bloque {
+  margin-bottom: 70px;
+  scroll-margin-top: 100px;
+}
+
+.seccion-titulo {
+  margin-bottom: 30px;
+  border-bottom: 2px solid var(--borde);
+  padding-bottom: 12px;
+}
+
+.seccion-titulo h2 {
+  color: var(--azul-express);
+  font-size: 1.6rem;
+}
+
+.seccion-titulo p {
+  color: var(--texto-mutado);
+  font-size: 0.95rem;
+}
+
+/* ==================== TARJETAS DE SERVICIOS ==================== */
+.servicios-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 30px;
+}
+
+.servicio-card {
+  background-color: var(--blanco);
+  border-radius: 14px;
+  overflow: hidden;
+  box-shadow: var(--sombra);
+  border: 1px solid var(--borde);
+  transition: transform 0.3s ease;
+}
+
+.servicio-card:hover {
+  transform: translateY(-5px);
+}
+
+.card-img {
+  height: 180px;
+  overflow: hidden;
+}
+
+.card-img img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.servicio-content {
+  padding: 22px;
+}
+
+.servicio-content h3 {
+  color: var(--azul-express);
+  font-size: 1.2rem;
+  margin-top: 8px;
+  margin-bottom: 10px;
+}
+
+.servicio-content p {
+  color: var(--texto-mutado);
+  font-size: 0.92rem;
+  margin-bottom: 15px;
+}
+
+.etiqueta-tag {
+  display: inline-block;
+  padding: 5px 12px;
+  border-radius: 20px;
+  font-size: 0.78rem;
+  font-weight: 700;
+}
+
+.tag-aereo {
+  background-color: #e0f2fe;
+  color: #0369a1;
+}
+
+.tag-terrestre {
+  background-color: #dcfce7;
+  color: #15803d;
+}
+
+.tag-agro {
+  background-color: #fef3c7;
+  color: #b45309;
+}
+
+/* TRANSICIÓN 2: Color en el botón */
+.btn {
+  display: inline-block;
+  padding: 8px 16px;
+  background-color: var(--azul-express);
+  color: var(--blanco);
+  text-decoration: none;
+  border-radius: 6px;
+  font-size: 0.88rem;
+  font-weight: 600;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.btn:hover {
+  background-color: var(--amarillo-express);
+  color: var(--azul-express);
+}
+
+/* ==================== TRÁMITES ESPECIALES ==================== */
+.tramites-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 24px;
+}
+
+.tramite-box {
+  background-color: var(--blanco);
+  padding: 30px;
+  border-radius: 14px;
+  border: 1px solid var(--borde);
+  box-shadow: var(--sombra);
+  text-align: left;
+}
+
+.tramite-box h3 {
+  color: var(--azul-express);
+  margin-bottom: 10px;
+  font-size: 1.15rem;
+}
+
+.tramite-box p {
+  color: var(--texto-mutado);
+  font-size: 0.9rem;
+}
+
+/* ==================== TABLA DE CATÁLOGO ==================== */
+.tabla-responsive {
+  overflow-x: auto;
+  background: var(--blanco);
+  border-radius: 12px;
+  box-shadow: var(--sombra);
+}
+
+.catalogo-tabla {
+  width: 100%;
+  border-collapse: collapse;
+  text-align: left;
+}
+
+.catalogo-tabla th,
+.catalogo-tabla td {
+  padding: 16px 20px;
+  border-bottom: 1px solid var(--borde);
+}
+
+.catalogo-tabla th {
+  background-color: var(--azul-express);
+  color: var(--blanco);
+  font-size: 0.95rem;
+}
+
+.catalogo-tabla tr:last-child td {
+  border-bottom: none;
+}
+
+/* ==================== PIE DE PÁGINA ==================== */
+footer {
+  background-color: var(--azul-express);
+  color: var(--blanco);
+  padding-top: 40px;
+  margin-top: 60px;
+}
+
+.footer-container {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 0 20px 30px;
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+
+.footer-col h3,
+.footer-col h4 {
+  color: var(--amarillo-express);
+  margin-bottom: 12px;
+}
+
+.footer-col p {
+  color: #cbd5e1;
+  font-size: 0.9rem;
+  margin-bottom: 6px;
+}
+
+.footer-col ul {
+  list-style: none;
+}
+
+.footer-col ul a {
+  color: #cbd5e1;
+  text-decoration: none;
+  font-size: 0.9rem;
+}
+
+.footer-col ul a:hover {
+  color: var(--amarillo-express);
+}
+
+.footer-bottom {
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  text-align: center;
+  padding: 18px;
+  font-size: 0.85rem;
+  color: #94a3b8;
+}
+
+/* ==================== RESPONSIVO ==================== */
+@media (max-width: 768px) {
+  header {
+    flex-direction: column;
+    height: auto;
+    padding: 15px;
+    gap: 15px;
+  }
+
+  header nav ul {
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  .dropdown-menu {
+    position: static;
+    border-top: none;
+    box-shadow: none;
+    background-color: rgba(255, 255, 255, 0.05);
+    border-radius: 6px;
+  }
+
+  .page-header h1 {
+    font-size: 1.8rem;
+  }
+} /* <--- LA MEDIA QUERY DEBE CERRAR AQUÍ */
+
+/* ==================== FORMULARIO COTIZADOR (RF-30.1) ==================== */
+.cotizador-card {
+  background-color: var(--blanco);
+  max-width: 550px;
+  margin: 0 auto;
+  padding: 35px;
+  border-radius: 16px;
+  border: 1px solid var(--borde);
+  box-shadow: var(--sombra);
+}
+
+.cotizador-form {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  text-align: left;
+}
+
+.form-group label {
+  font-weight: 700;
+  font-size: 0.9rem;
+  color: var(--azul-express);
+}
+
+.form-group select,
+.form-group input {
+  width: 100%;
+  padding: 12px 16px;
+  border: 1px solid var(--borde);
+  border-radius: 8px;
+  font-size: 0.95rem;
+  background-color: var(--gris-fondo);
+  outline: none;
+}
+
+.form-group select:focus,
+.form-group input:focus {
+  border-color: var(--azul-express);
+}
+
+/* TRANSICIÓN 2: Color en el botón de cotización */
+.btn-cotizar {
+  background-color: var(--azul-express);
+  color: var(--blanco);
+  border: none;
+  padding: 14px 20px;
+  border-radius: 8px;
+  font-size: 1rem;
+  font-weight: 700;
+  cursor: pointer;
+  margin-top: 10px;
+  transition: background-color 0.4s ease, color 0.4s ease;
+}
+
+.btn-cotizar:hover {
+  background-color: var(--amarillo-express);
+  color: var(--azul-express);
+}
+
+/* ANIMACIÓN 2: Confirmación animada al cotizar */
+.confirmacion-cotizacion {
+  display: block;
+  margin-top: 25px;
+  padding: 16px;
+  background-color: #dcfce7;
+  color: #15803d;
+  border: 1px solid #bbf7d0;
+  border-radius: 10px;
+  font-weight: 700;
+  font-size: 1.1rem;
+  text-align: center;
+  animation: confirmacionPop 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+@keyframes confirmacionPop {
+  0% {
+    opacity: 0;
+    transform: scale(0.5);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+/* ==================== PUNTOS DE RECOJO Y UBICACIÓN ==================== */
+.puntos-recojo-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 25px;
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+/* ANIMACIÓN 3 Y TRANSICIÓN 1: Aparición progresiva y cambio de color */
+.punto-card {
+  background-color: var(--blanco);
+  border: 2px solid var(--borde);
+  padding: 30px;
+  border-radius: 14px;
+  text-align: left;
+  opacity: 0;
+  animation: aparicionProgresiva 0.6s ease forwards;
+  animation-delay: calc(var(--i, 1) * 0.2s);
+  transition: background-color 0.3s ease, border-color 0.3s ease, transform 0.3s ease;
+}
+
+.punto-card:hover {
+  background-color: #eef4ff; /* Variable --azul-claro */
+  border-color: var(--azul-express);
+  transform: translateY(-4px);
+}
+
+.punto-card h3 {
+  color: var(--azul-express);
+  font-size: 1.2rem;
+  margin-bottom: 8px;
+}
+
+.punto-card p {
+  color: var(--texto-mutado);
+  font-size: 0.95rem;
+}
+
+@keyframes aparicionProgresiva {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}

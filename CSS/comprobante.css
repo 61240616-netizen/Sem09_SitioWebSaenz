@@ -1,0 +1,100 @@
+/* css/comprobante.css — constancia de pago y guía de envío imprimible */
+.comprobante-contenedor {
+  max-width: 720px;
+  margin: 0 auto;
+  padding: 40px 20px;
+}
+
+.comprobante-contenedor h1 {
+  color: var(--azul-express);
+  text-align: center;
+  font-size: 1.6rem;
+  margin-bottom: 24px;
+}
+
+.hoja {
+  background: var(--blanco);
+  border: 1px solid var(--borde);
+  border-radius: 14px;
+  padding: 28px 30px;
+  box-shadow: var(--sombra);
+}
+
+.hoja-encabezado {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  flex-wrap: wrap;
+  gap: 10px;
+  border-bottom: 2px solid var(--azul-express);
+  padding-bottom: 12px;
+  margin-bottom: 16px;
+}
+
+.hoja-marca { font-family: 'Poppins', 'Segoe UI', Arial, sans-serif; font-size: 1.3rem; font-weight: 800; color: var(--azul-express); }
+.hoja-marca small { display: block; font-size: 0.75rem; font-weight: 600; color: var(--texto-mutado); }
+.hoja-codigo { text-align: right; font-size: 0.85rem; color: var(--texto-mutado); }
+.hoja-codigo strong { display: block; font-size: 1.2rem; letter-spacing: 1px; color: var(--texto-oscuro); }
+
+.hoja h2 {
+  margin: 18px 0 8px;
+  font-size: 1rem;
+  color: var(--azul-express);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.hoja dl {
+  display: grid;
+  grid-template-columns: 170px 1fr;
+  gap: 6px 14px;
+}
+
+.hoja dt { font-weight: 700; color: var(--texto-mutado); font-size: 0.9rem; }
+.hoja dd { font-size: 0.95rem; }
+.hoja dd.importe { font-weight: 800; font-size: 1.15rem; color: var(--azul-express); }
+
+.hoja-pie {
+  margin-top: 20px;
+  padding-top: 12px;
+  border-top: 1px dashed #94a3b8;
+  font-size: 0.8rem;
+  color: var(--texto-mutado);
+  text-align: center;
+}
+
+.acciones {
+  display: flex;
+  gap: 12px;
+  justify-content: center;
+  margin-top: 22px;
+}
+
+.acciones button, .acciones a {
+  padding: 12px 22px;
+  border-radius: 8px;
+  border: none;
+  font-size: 0.95rem;
+  font-weight: 700;
+  font-family: inherit;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.acciones button { background: var(--azul-express); color: var(--blanco); }
+.acciones button:disabled { background: #94a3b8; cursor: not-allowed; }
+.acciones a { background: var(--amarillo-express); color: var(--azul-express); }
+.acciones :focus-visible { outline: 3px solid rgba(13, 44, 108, 0.35); outline-offset: 2px; }
+
+@media (max-width: 520px) {
+  .hoja dl { grid-template-columns: 1fr; }
+  .hoja dt { margin-top: 6px; }
+}
+
+/* Solo se imprime la constancia / guía */
+@media print {
+  header, nav, footer, .acciones, h1 { display: none !important; }
+  body { background: #fff; color: #000; }
+  .comprobante-contenedor { padding: 0; max-width: none; }
+  .hoja { border: 1px solid #000; box-shadow: none; border-radius: 0; padding: 16px; }
+}

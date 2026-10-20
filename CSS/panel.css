@@ -1,0 +1,127 @@
+/* css/panel.css */
+:root {
+  --amarillo-express: #ffb800;
+  --azul-express: #0d2c6c;
+  --rojo-peligro: #ef4444;
+  --rojo-hover: #dc2626;
+  --gris-fondo: #f8fafc;
+  --texto-oscuro: #0f172a;
+  --blanco: #ffffff;
+  --borde: #e2e8f0;
+  --sombra: 0 10px 30px -5px rgba(13, 44, 108, 0.08);
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  font-family: 'Plus Jakarta Sans', Arial, sans-serif;
+  background-color: var(--gris-fondo);
+  color: var(--texto-oscuro);
+  padding: 40px 20px;
+}
+
+.panel-container {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.panel-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 30px;
+}
+
+h1 {
+  font-family: 'Poppins', Arial, sans-serif;
+  color: var(--azul-express);
+}
+
+.user-rol {
+  background-color: var(--amarillo-express);
+  color: var(--azul-express);
+  padding: 6px 14px;
+  border-radius: 20px;
+  font-weight: 700;
+  font-size: 0.85rem;
+}
+
+.tabla-wrapper {
+  background: var(--blanco);
+  border-radius: 12px;
+  box-shadow: var(--sombra);
+  overflow: auto;
+  border: 1px solid var(--borde);
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  text-align: left;
+}
+
+thead {
+  background-color: var(--azul-express);
+  color: var(--blanco);
+}
+
+th, td {
+  padding: 14px 20px;
+  border-bottom: 1px solid var(--borde);
+  font-size: 0.9rem;
+}
+
+tbody tr:hover { background-color: #f1f5f9; }
+
+.btn-eliminar {
+  background-color: var(--rojo-peligro);
+  color: var(--blanco);
+  border: none;
+  padding: 8px 14px;
+  border-radius: 6px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+.btn-eliminar:hover { background-color: var(--rojo-hover); }
+
+/* ---- Información de turno y hora de Perú ---- */
+.panel-info { margin: -14px 0 16px; font-size: 0.9rem; color: #64748b; }
+.panel-info strong { color: var(--azul-express); }
+.aviso-panel:not(:empty) { background: #dcfce7; color: #166534; padding: 10px 14px; border-radius: 8px; margin-bottom: 16px; font-weight: 600; }
+[hidden] { display: none !important; }
+
+/* ---- Fecha, pago y acciones ---- */
+.fecha-dia { font-size: 0.9rem; }
+.fecha-hora { font-size: 0.8rem; color: #64748b; font-weight: 700; }
+
+.pago-badge { display: inline-block; padding: 4px 10px; border-radius: 20px; font-size: 0.75rem; font-weight: 700; white-space: nowrap; }
+.pago-pendiente { background: #fef9c3; color: #854d0e; }
+.pago-pagado { background: #dcfce7; color: #166534; }
+.pago-exonerado { background: #e0e7ff; color: #3730a3; }
+
+.acciones-col { display: flex; flex-direction: column; gap: 6px; }
+.btn-accion {
+  display: block; padding: 6px 12px; border: none; border-radius: 4px; text-align: center;
+  font-size: 0.85rem; font-weight: 700; font-family: inherit; color: #fff; text-decoration: none; cursor: pointer;
+}
+.btn-editar { background: #0d2c6c; }
+.btn-cancelar { background: #64748b; }
+.btn-accion.btn-eliminar { background: #ef4444; padding: 6px 12px; }
+
+/* ---- Ventana "nuevo registro" ---- */
+dialog { border: none; border-radius: 14px; padding: 26px 28px; width: min(480px, 92vw); box-shadow: 0 25px 60px rgba(0,0,0,.35); }
+dialog::backdrop { background: rgba(7, 28, 72, 0.55); }
+dialog h2 { color: var(--azul-express); margin-bottom: 8px; font-family: 'Poppins', Arial, sans-serif; }
+dialog label { display: block; font-size: 0.88rem; font-weight: 600; margin: 12px 0 5px; }
+dialog input, dialog select { width: 100%; padding: 10px 12px; border: 1.5px solid #cbd5e1; border-radius: 8px; font-size: 0.95rem; font-family: inherit; }
+.fila-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+.fila-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; }
+.error-nuevo { color: #b91c1c; font-weight: 600; font-size: 0.88rem; margin-top: 10px; }
+.error-nuevo:empty { display: none; }
+.dialogo-botones { display: flex; gap: 10px; margin-top: 18px; }
+.dialogo-botones button { flex: 1; padding: 12px; border: none; border-radius: 8px; font-weight: 700; font-family: inherit; cursor: pointer; background: #e2e8f0; color: #0f172a; }
+.dialogo-botones .primario { background: var(--azul-express); color: #fff; }
+.dialogo-botones .primario:disabled { background: #94a3b8; cursor: not-allowed; }
+:focus-visible { outline: 3px solid rgba(13, 44, 108, 0.35); outline-offset: 2px; }

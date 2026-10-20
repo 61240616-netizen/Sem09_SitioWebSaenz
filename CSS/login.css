@@ -1,0 +1,293 @@
+/* ==================== FORMULARIOS Y AUTENTICACIÓN (SEMANA 6) ==================== */
+
+/* Contenedor centrado para Login y Registro */
+.auth-section {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 60px 20px;
+  min-height: calc(100vh - 150px);
+}
+
+.auth-card {
+  background-color: var(--blanco);
+  width: 100%;
+  max-width: 440px;
+  padding: 35px 30px;
+  border-radius: 16px;
+  border: 1px solid var(--borde);
+  box-shadow: var(--sombra);
+}
+
+/* Pestañas para alternar entre Iniciar Sesión y Crear Cuenta */
+.tabs-auth {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 25px;
+  border-bottom: 2px solid var(--borde);
+}
+
+.tab-btn {
+  flex: 1;
+  padding: 10px 0;
+  border: none;
+  background: transparent;
+  font-family: 'Poppins', sans-serif;
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: var(--texto-mutado);
+  cursor: pointer;
+  transition: color 0.3s ease, border-color 0.3s ease;
+  border-bottom: 3px solid transparent;
+  margin-bottom: -2px;
+}
+
+.tab-btn:hover {
+  color: var(--azul-express);
+}
+
+.tab-btn.activa {
+  color: var(--azul-express);
+  border-bottom-color: var(--amarillo-express);
+}
+
+/* Estilos de inputs y campos */
+.form-auth h2 {
+  color: var(--azul-express);
+  font-size: 1.4rem;
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+.campo {
+  margin-bottom: 18px;
+}
+
+.campo label {
+  display: block;
+  font-size: 0.88rem;
+  font-weight: 600;
+  color: var(--texto-oscuro);
+  margin-bottom: 6px;
+}
+
+.campo input {
+  width: 100%;
+  padding: 12px 14px;
+  font-size: 0.95rem;
+  font-family: inherit;
+  color: var(--texto-oscuro);
+  background-color: var(--gris-fondo);
+  border: 1.5px solid var(--borde);
+  border-radius: 8px;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.campo input:focus {
+  outline: none;
+  border-color: var(--azul-express);
+  background-color: var(--blanco);
+  box-shadow: 0 0 0 4px rgba(13, 44, 108, 0.08);
+}
+
+/* Mensajes de Alerta */
+.mensaje-alerta {
+  font-size: 0.88rem;
+  font-weight: 600;
+  text-align: center;
+  margin-bottom: 15px;
+  color: #e11d48;
+}
+
+/* Botón Principal */
+.btn-auth,
+.btn-guardar {
+  width: 100%;
+  padding: 14px;
+  margin-top: 10px;
+  background-color: var(--azul-express);
+  color: var(--blanco);
+  border: none;
+  border-radius: 10px;
+  font-family: 'Poppins', sans-serif;
+  font-size: 0.95rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.btn-auth:hover,
+.btn-guardar:hover {
+  background-color: var(--amarillo-express);
+  color: var(--azul-express);
+}
+
+/* ==================== FORMULARIO COTIZADOR ==================== */
+.contenedor-formulario {
+  max-width: 600px;
+  margin: 50px auto;
+  background: var(--blanco);
+  padding: 35px;
+  border-radius: 16px;
+  border: 1px solid var(--borde);
+  box-shadow: var(--sombra);
+}
+
+.contenedor-formulario h1 {
+  color: var(--azul-express);
+  margin-bottom: 8px;
+  font-size: 1.8rem;
+}
+
+.contenedor-formulario p {
+  color: var(--texto-mutado);
+  margin-bottom: 25px;
+  font-size: 0.95rem;
+}
+
+/* Caja de Confirmación con Animación reutilizada */
+.confirmacion-box {
+  margin-top: 25px;
+  padding: 20px;
+  background-color: #dcfce7;
+  border: 1.5px solid #22c55e;
+  border-radius: 10px;
+  color: #15803d;
+  text-align: center;
+}
+
+.confirmacion-box h3 {
+  font-size: 1.1rem;
+  margin-bottom: 6px;
+}
+
+.confirmacion-box strong {
+  display: inline-block;
+  margin-top: 6px;
+  padding: 6px 14px;
+  background-color: #15803d;
+  color: var(--blanco);
+  border-radius: 6px;
+  font-size: 1.1rem;
+  letter-spacing: 1px;
+}
+
+.oculto {
+  display: none;
+}
+
+.mostrar-animacion {
+  display: block;
+  animation: confirmacionPop 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+}
+/* Mensaje de éxito (cuenta creada) */
+.mensaje-alerta.exito { color: #15803d; }
+.mensaje-alerta:empty { display: none; }
+
+/* ==================== PANTALLA DE CARGA DEL LOGIN (carro + "...") ==================== */
+[hidden] { display: none !important; }
+
+body.cargando { overflow: hidden; }
+
+.pantalla-carga {
+  position: fixed;
+  inset: 0;
+  z-index: 5000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: radial-gradient(circle at 50% 40%, #16409a 0%, #0d2c6c 55%, #071c48 100%);
+  animation: cargaAparece 0.3s ease-out;
+}
+
+@keyframes cargaAparece {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+.carga-contenido {
+  width: min(420px, 90vw);
+  text-align: center;
+}
+
+/* Escena: el carro avanza sobre una ruta con rayas que corren hacia atrás */
+.carga-escena {
+  position: relative;
+  height: 110px;
+  overflow: hidden;
+  margin-bottom: 18px;
+}
+
+.carga-auto {
+  position: absolute;
+  left: 0;
+  bottom: 17px;
+  animation: cargaAvanza 2.4s cubic-bezier(0.45, 0.05, 0.4, 1) infinite;
+}
+
+.carga-auto .carro-svg {
+  display: block;
+  animation: cargaRebote 0.35s ease-in-out infinite alternate;
+}
+
+@keyframes cargaAvanza {
+  0%   { transform: translateX(-160px); }
+  100% { transform: translateX(440px); }
+}
+
+@keyframes cargaRebote {
+  from { transform: translateY(0); }
+  to   { transform: translateY(-2px); }
+}
+
+.carga-ruta {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 22px;
+  background: #0a1f4d;
+  border-top: 3px solid #1f4fb3;
+}
+
+.carga-ruta span {
+  position: absolute;
+  top: 8px;
+  left: 0;
+  width: 200%;
+  height: 4px;
+  background: repeating-linear-gradient(90deg, var(--amarillo-express) 0 28px, transparent 28px 56px);
+  animation: cargaRaya 0.5s linear infinite;
+}
+
+@keyframes cargaRaya {
+  from { transform: translateX(0); }
+  to   { transform: translateX(-56px); }
+}
+
+.carga-linea {
+  color: var(--blanco);
+  font-family: 'Poppins', 'Segoe UI', Arial, sans-serif;
+  font-size: 1.25rem;
+  font-weight: 700;
+  letter-spacing: 0.3px;
+}
+
+/* Los tres puntos suspensivos que se encienden uno por uno */
+.carga-puntos i {
+  display: inline-block;
+  font-style: normal;
+  color: var(--amarillo-express);
+  animation: cargaPunto 1.2s ease-in-out infinite;
+}
+.carga-puntos i:nth-child(2) { animation-delay: 0.2s; }
+.carga-puntos i:nth-child(3) { animation-delay: 0.4s; }
+
+@keyframes cargaPunto {
+  0%, 60%, 100% { opacity: 0.15; transform: translateY(0); }
+  30%           { opacity: 1;    transform: translateY(-5px); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .carga-auto, .carga-ruta span, .carga-auto .carro-svg { animation-duration: 6s; }
+}

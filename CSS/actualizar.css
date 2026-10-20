@@ -1,0 +1,98 @@
+/* css/actualizar.css */
+:root {
+  --amarillo-express: #ffb800;
+  --azul-express: #0d2c6c;
+  --gris-fondo: #f8fafc;
+  --texto-oscuro: #0f172a;
+  --blanco: #ffffff;
+  --borde: #e2e8f0;
+  --sombra: 0 10px 30px -5px rgba(13, 44, 108, 0.08);
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  font-family: 'Plus Jakarta Sans', Arial, sans-serif;
+  background-color: var(--gris-fondo);
+  color: var(--texto-oscuro);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  padding: 20px;
+}
+
+.form-card {
+  background: var(--blanco);
+  padding: 40px;
+  border-radius: 16px;
+  box-shadow: var(--sombra);
+  width: 100%;
+  max-width: 450px;
+  border: 1px solid var(--borde);
+}
+
+h2 {
+  font-family: 'Poppins', Arial, sans-serif;
+  color: var(--azul-express);
+  text-align: center;
+  margin-bottom: 25px;
+}
+
+.form-group {
+  margin-bottom: 20px;
+}
+
+label {
+  display: block;
+  font-weight: 600;
+  margin-bottom: 8px;
+  font-size: 0.9rem;
+  color: var(--texto-oscuro);
+}
+
+input[type="text"],
+input[type="number"] {
+  width: 100%;
+  padding: 12px 15px;
+  border: 1.5px solid var(--borde);
+  border-radius: 8px;
+  font-size: 1rem;
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  transition: border-color 0.3s ease;
+}
+
+input:focus {
+  outline: none;
+  border-color: var(--azul-express);
+}
+
+button {
+  width: 100%;
+  background-color: var(--azul-express);
+  color: var(--blanco);
+  border: none;
+  padding: 14px;
+  border-radius: 8px;
+  font-size: 1rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: background 0.3s ease;
+  margin-top: 10px;
+}
+
+button:hover { background-color: var(--amarillo-express); color: var(--azul-express); }
+button:disabled { background-color: #cbd5e1; cursor: not-allowed; color: #64748b; }
+
+/* ---- Medidas y monto ---- */
+.medidas-edit { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; margin-bottom: 15px; }
+.medidas-edit label { margin-bottom: 5px; font-size: 0.85rem; }
+.medidas-edit input { width: 100%; padding: 10px; border: 1px solid #ccc; border-radius: 6px; font-size: 0.95rem; }
+.monto-edit { margin-bottom: 14px; font-size: 1.05rem; }
+.monto-edit strong { font-size: 1.35rem; color: var(--azul-express); }
+.monto-edit span { font-size: 0.8rem; font-weight: 700; margin-left: 8px; color: #64748b; }
+.edit-error { color: #b91c1c; font-weight: 600; font-size: 0.9rem; margin-bottom: 12px; }
+.edit-error:empty { display: none; }
+select, input:disabled, select:disabled { font-family: inherit; }
+input:disabled, select:disabled { background: #f1f5f9; color: #64748b; }
+:focus-visible { outline: 3px solid rgba(13, 44, 108, 0.35); outline-offset: 2px; }

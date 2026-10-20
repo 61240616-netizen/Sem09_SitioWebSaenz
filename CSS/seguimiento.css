@@ -1,0 +1,203 @@
+/* css/seguimiento.css — seguimiento animado del pedido (carro que avanza) */
+.seg {
+  --seg-azul: var(--azul-express, #0d2c6c);
+  --seg-amarillo: var(--amarillo-express, #ffb800);
+  --seg-gris: var(--borde, #cbd5e1);
+  --avance: 0;
+  position: relative;
+  padding-top: 46px;            /* espacio para el carro sobre la línea */
+  width: 100%;
+}
+
+/* ---------- Pista: línea gris + barra de progreso + carro ---------- */
+.seg-pista {
+  position: absolute;
+  top: 55px;
+  left: 12.5%;                  /* centro del primer punto */
+  right: 12.5%;                 /* centro del último punto */
+  height: 6px;
+}
+
+.seg-linea {
+  position: absolute;
+  inset: 0;
+  border-radius: 6px;
+  background: var(--seg-gris);
+}
+
+.seg-progreso {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: calc(max(var(--avance), 0) * 100%);
+  border-radius: 6px;
+  background: repeating-linear-gradient(-45deg, var(--seg-amarillo) 0 8px, #ffd466 8px 16px);
+  background-size: 22.6px 22.6px;
+  transition: width 1.8s cubic-bezier(0.45, 0.05, 0.4, 1);
+  animation: segRayas 0.9s linear infinite;
+}
+
+@keyframes segRayas {
+  to { background-position: 22.6px 0; }
+}
+
+.seg-auto {
+  position: absolute;
+  bottom: -2px;
+  left: calc(var(--avance) * 100%);
+  width: 62px;
+  transform: translateX(-50%);
+  transition: left 1.8s cubic-bezier(0.45, 0.05, 0.4, 1);
+}
+
+.seg-auto .carro-svg {
+  display: block;
+  width: 100%;
+  height: auto;
+  animation: segRebote 0.4s ease-in-out infinite alternate;
+}
+
+@keyframes segRebote {
+  from { transform: translateY(0); }
+  to   { transform: translateY(-1.5px); }
+}
+
+/* ---------- Etapas ---------- */
+.seg-pasos {
+  position: relative;
+  z-index: 2;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.seg-paso {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  text-align: center;
+}
+
+.seg-punto {
+  position: relative;
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  background: #fff;
+  border: 3px solid var(--seg-gris);
+  transition: background-color 0.5s ease, border-color 0.5s ease;
+}
+
+.seg-etiqueta {
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: var(--texto-mutado, #64748b);
+  transition: color 0.4s ease;
+}
+
+.seg-paso.hecho .seg-punto {
+  background: var(--seg-azul);
+  border-color: var(--seg-azul);
+}
+
+/* Visto de "etapa completada" */
+.seg-paso.hecho .seg-punto::after {
+  content: '';
+  position: absolute;
+  left: 6px;
+  top: 2px;
+  width: 5px;
+  height: 10px;
+  border: solid #fff;
+  border-width: 0 2px 2px 0;
+  transform: rotate(45deg);
+}
+
+.seg-paso.hecho .seg-etiqueta { color: var(--seg-azul); }
+
+.seg-paso.actual .seg-punto {
+  background: var(--seg-azul);
+  border-color: var(--seg-amarillo);
+}
+.seg-paso.actual .seg-etiqueta { color: var(--seg-azul); font-weight: 800; }
+
+/* Pulso en la etapa actual (mientras el envío sigue en camino) */
+.seg:not(.seg--final):not(.seg--cancelado) .seg-paso.actual .seg-punto::before {
+  content: '';
+  position: absolute;
+  inset: -7px;
+  border-radius: 50%;
+  border: 2px solid var(--seg-amarillo);
+  animation: segPulso 1.4s ease-out infinite;
+}
+
+@keyframes segPulso {
+  0%   { transform: scale(0.6); opacity: 0.9; }
+  100% { transform: scale(1.35); opacity: 0; }
+}
+
+/* Entregado: el carro se detiene, el último punto se pinta de verde */
+.seg--final .seg-progreso { animation: none; background: #16a34a; }
+.seg--final .seg-auto .carro-svg { animation: none; }
+.seg--final .seg-paso.actual .seg-punto { background: #16a34a; border-color: #16a34a; }
+.seg--final .seg-paso.actual .seg-punto::after {
+  content: '';
+  position: absolute;
+  left: 6px;
+  top: 2px;
+  width: 5px;
+  height: 10px;
+  border: solid #fff;
+  border-width: 0 2px 2px 0;
+  transform: rotate(45deg);
+}
+.seg--final .seg-paso.actual .seg-etiqueta { color: #166534; }
+
+/* Cancelado: todo en gris */
+.seg--cancelado .seg-progreso { animation: none; background: var(--seg-gris); }
+.seg--cancelado .seg-auto { filter: grayscale(1); opacity: 0.7; }
+.seg--cancelado .seg-auto .carro-svg { animation: none; }
+
+.seg-texto {
+  margin-top: 16px;
+  text-align: center;
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--seg-azul);
+}
+.seg--cancelado .seg-texto { color: #991b1b; }
+
+/* ---------- Versión compacta (tabla "Mis cotizaciones") ---------- */
+.seg--compacto { padding-top: 34px; min-width: 230px; }
+.seg--compacto .seg-pista { top: 39px; height: 4px; }
+.seg--compacto .seg-auto { width: 40px; bottom: -1px; }
+.seg--compacto .seg-pasos { margin-top: -2px; }
+.seg--compacto .seg-punto { width: 14px; height: 14px; border-width: 2px; }
+.seg--compacto .seg-paso.hecho .seg-punto::after,
+.seg--final.seg--compacto .seg-paso.actual .seg-punto::after { left: 3px; top: 0; width: 3px; height: 7px; border-width: 0 2px 2px 0; }
+.seg--compacto .seg-etiqueta { display: none; }
+.seg--compacto .seg-paso.actual .seg-punto::before { inset: -5px; }
+
+/* ---------- Etiquetas de estado ---------- */
+.seg-badge {
+  display: inline-block;
+  padding: 4px 10px;
+  border-radius: 20px;
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+.seg-badge--registrado { background: #dbeafe; color: #1e3a8a; }
+.seg-badge--transito   { background: #fef08a; color: #854d0e; }
+.seg-badge--local      { background: #fed7aa; color: #9a3412; }
+.seg-badge--entregado  { background: #dcfce7; color: #166534; }
+.seg-badge--cancelado  { background: #fee2e2; color: #991b1b; }
+
+@media (prefers-reduced-motion: reduce) {
+  .seg-progreso, .seg-auto, .seg-auto .carro-svg, .seg-paso.actual .seg-punto::before { animation: none !important; transition: none !important; }
+}

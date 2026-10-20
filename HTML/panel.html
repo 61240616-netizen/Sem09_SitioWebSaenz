@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Panel Gestión — LogísticaExpress</title>
+  <link rel="stylesheet" href="../CSS/inicio.css">
+  <link rel="stylesheet" href="../CSS/panel.css">
+  <link rel="stylesheet" href="../CSS/seguimiento.css">
+</head>
+<body>
+  <!-- ENCABEZADO -->
+  <header>
+    <a href="../index.html" class="logo">LogísticaExpress</a>
+    <nav>
+      <ul>
+        <li><a href="../index.html">Inicio</a></li>
+        <li><a href="servicios.html">Servicios</a></li>
+        <li><a href="panel.html" class="active">Panel Global</a></li>
+        <li><a href="caja.html" id="nav-caja" hidden>Caja</a></li>
+        <li><a href="#" id="btn-cerrar-sesion" class="btn-login-nav">Cerrar Sesión</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main class="panel-container">
+    <div class="panel-header">
+      <h1>Panel Global de Envíos (CRUD)</h1>
+      <span class="user-rol" id="etiqueta-rol">Administración</span>
+    </div>
+    <p class="panel-info">Hora de Perú: <strong id="reloj-peru">--</strong> <span id="info-turno"></span></p>
+    <p id="aviso-panel" class="aviso-panel" role="status" aria-live="polite"></p>
+
+    <!-- BARRA DE HERRAMIENTAS: BUSCADOR Y CREAR -->
+    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px; flex-wrap: wrap; gap: 15px;">
+      
+      <!-- Consultar / Buscar -->
+      <div style="display: flex; gap: 10px;">
+        <input type="text" id="input-busqueda" placeholder="Buscar por código o cliente..." style="padding: 10px; border: 1px solid #ccc; border-radius: 6px; width: 280px; font-family: inherit;">
+        <button id="btn-buscar" style="background:#ffb800; color:#0d2c6c; border:none; padding:10px 20px; border-radius:6px; font-weight:bold; cursor:pointer;">Consultar</button>
+        <button id="btn-limpiar" style="background:#e2e8f0; color:#475569; border:none; padding:10px 15px; border-radius:6px; font-weight:bold; cursor:pointer; display:none;">Limpiar</button>
+      </div>
+
+      <!-- Crear -->
+      <div>
+        <button type="button" id="btn-nuevo" style="background:#0d2c6c; color:white; padding:10px 20px; border:none; border-radius:8px; font-weight:bold; cursor:pointer; font-family:inherit;">+ Crear Nuevo Registro</button>
+      </div>
+      
+    </div>
+
+    <div class="tabla-wrapper">
+      <table>
+        <thead>
+          <tr>
+            <th>Código</th>
+            <th>Remitente</th>
+            <th>Origen</th>
+            <th>Destino</th>
+            <th>Peso</th>
+            <th>Monto</th>
+            <th>Pago</th>
+            <th>Fecha y Hora (Perú)</th>
+            <th>Estado</th>
+            <th>Acciones</th>
+          </tr>
+        </thead>
+        <tbody id="tabla-panel"></tbody>
+      </table>
+    </div>
+  </main>
+  
+
+  <!-- CREAR REGISTRO DESDE EL PANEL (cliente presencial) -->
+  <dialog id="dialogo-nuevo" aria-labelledby="t-nuevo">
+    <form id="form-nuevo" novalidate>
+      <h2 id="t-nuevo">Nuevo registro presencial</h2>
+      <label for="nuevo-remitente">Nombre del remitente</label>
+      <input id="nuevo-remitente" name="nombre_remitente" required maxlength="120">
+      <div class="fila-2">
+        <div><label for="nuevo-origen">Origen</label><select id="nuevo-origen" name="origen" required></select></div>
+        <div><label for="nuevo-destino">Destino</label><select id="nuevo-destino" name="destino" required></select></div>
+      </div>
+      <label for="nuevo-peso">Peso real (kg)</label>
+      <input id="nuevo-peso" name="peso_kg" type="number" min="0.1" max="9999" step="0.1" required>
+      <div class="fila-3">
+        <div><label for="nuevo-largo">Largo (cm)</label><input id="nuevo-largo" name="largo_cm" type="number" min="1" max="9999" step="0.1" required></div>
+        <div><label for="nuevo-ancho">Ancho (cm)</label><input id="nuevo-ancho" name="ancho_cm" type="number" min="1" max="9999" step="0.1" required></div>
+        <div><label for="nuevo-alto">Alto (cm)</label><input id="nuevo-alto" name="alto_cm" type="number" min="1" max="9999" step="0.1" required></div>
+      </div>
+      <p id="error-nuevo" class="error-nuevo" role="alert"></p>
+      <div class="dialogo-botones">
+        <button type="submit" class="primario">Crear registro</button>
+        <button type="button" id="cancelar-nuevo">Cancelar</button>
+      </div>
+    </form>
+  </dialog>
+
+  <script type="module" src="../JS/panel/panel.js"></script>
+</body>
+</html>

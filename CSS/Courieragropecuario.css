@@ -1,0 +1,396 @@
+/* ==================== VARIABLES GLOBAL Y RESET ==================== */
+:root {
+  --amarillo-express: #ffb800;
+  --amarillo-hover: #e0a200;
+  --azul-express: #0d2c6c;
+  --azul-hover: #143d8d;
+  --verde-agro: #15803d;
+  --verde-hover: #166534;
+  --verde-claro: #dcfce7;
+  --gris-fondo: #f8fafc;
+  --blanco: #ffffff;
+  --texto-oscuro: #0f172a;
+  --texto-mutado: #64748b;
+  --borde: #e2e8f0;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: 'Plus Jakarta Sans', 'Segoe UI', Arial, sans-serif;
+  background-color: var(--gris-fondo);
+  color: var(--texto-oscuro);
+  line-height: 1.6;
+}
+
+h1, h2, h3, h4 {
+  font-family: 'Poppins', 'Segoe UI', Arial, sans-serif;
+}
+
+/* ==================== ENCABEZADO Y NAVEGACIÓN ==================== */
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: var(--azul-express);
+  padding: 0 5%;
+  height: 75px;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.logo {
+  font-size: 1.5rem;
+  font-weight: 800;
+  color: var(--blanco);
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.logo span {
+  color: var(--amarillo-express);
+}
+
+header nav ul {
+  list-style: none;
+  display: flex;
+  gap: 12px;
+  align-items: center;
+}
+
+header nav a {
+  color: var(--blanco);
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 0.9rem;
+  padding: 10px 16px;
+  border-radius: 8px;
+  transition: background 0.3s ease, color 0.3s ease;
+}
+
+header nav a:hover,
+header nav a.active {
+  background: rgba(255, 255, 255, 0.1);
+  color: var(--amarillo-express);
+}
+
+/* Menú Desplegable */
+.dropdown {
+  position: relative;
+}
+
+.dropdown-btn {
+  cursor: pointer;
+}
+
+.dropdown-menu {
+  display: none;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  background-color: var(--azul-express);
+  min-width: 230px;
+  border-top: 3px solid var(--amarillo-express);
+  border-radius: 0 0 10px 10px;
+  list-style: none;
+  padding: 6px 0;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
+}
+
+.dropdown:hover .dropdown-menu {
+  display: block;
+}
+
+.dropdown-menu li {
+  width: 100%;
+}
+
+.dropdown-menu a {
+  display: block;
+  padding: 10px 16px;
+  border-radius: 0;
+  font-weight: 500;
+}
+
+.dropdown-menu a:hover {
+  background-color: var(--azul-hover);
+  color: var(--amarillo-express);
+}
+
+/* ==================== ESTRUCTURA PRINCIPAL ==================== */
+main {
+  max-width: 1100px;
+  margin: 40px auto;
+  padding: 0 20px;
+}
+
+/* Héroes de Página */
+.hero,
+.service-hero {
+  text-align: center;
+  margin-bottom: 40px;
+}
+
+.hero h1,
+.service-hero h1 {
+  color: var(--azul-express);
+  font-size: 2.2rem;
+  margin: 10px 0;
+}
+
+.hero p,
+.service-hero p {
+  color: var(--texto-mutado);
+  max-width: 700px;
+  margin: 0 auto;
+}
+
+/* Etiquetas (Badges) */
+.badge {
+  display: inline-block;
+  padding: 6px 16px;
+  border-radius: 20px;
+  font-weight: 700;
+  font-size: 0.85rem;
+  text-transform: uppercase;
+}
+
+.badge.agro {
+  background-color: var(--verde-claro);
+  color: var(--verde-agro);
+}
+
+/* Bloques de Información Generales */
+.info-block {
+  background-color: var(--blanco);
+  padding: 30px;
+  border-radius: 16px;
+  border: 1px solid var(--borde);
+  margin-bottom: 40px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+}
+
+.info-block h2 {
+  color: var(--azul-express);
+  font-size: 1.4rem;
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+/* ==================== GRIDS Y TARJETAS ==================== */
+/* Grid Agropecuario */
+.agro-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 20px;
+}
+
+.agro-item {
+  background-color: #f0fdf4;
+  border: 1px solid #bbf7d0;
+  border-radius: 12px;
+  padding: 20px;
+  text-align: center;
+  transition: transform 0.2s ease;
+}
+
+.agro-item:hover {
+  transform: translateY(-4px);
+}
+
+.agro-item h3 {
+  color: var(--verde-agro);
+  margin-bottom: 8px;
+  font-size: 1.1rem;
+}
+
+/* Plan de Tarifas / Cotizaciones */
+.buy-section h2 {
+  color: var(--azul-express);
+  margin-bottom: 24px;
+  text-align: center;
+}
+
+.agro-plans {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 24px;
+}
+
+.plan-card {
+  background-color: var(--blanco);
+  border: 1px solid var(--borde);
+  border-radius: 16px;
+  padding: 30px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.03);
+}
+
+.plan-card.featured {
+  border: 2px solid var(--verde-agro);
+}
+
+.price {
+  font-size: 2rem;
+  font-weight: 800;
+  color: var(--verde-agro);
+  margin: 15px 0;
+}
+
+/* Botones */
+.btn-agro,
+.btn {
+  display: block;
+  background-color: var(--verde-agro);
+  color: var(--blanco);
+  font-weight: 800;
+  text-decoration: none;
+  padding: 12px 20px;
+  border-radius: 8px;
+  margin-top: 15px;
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.2s ease, transform 0.2s ease;
+}
+
+.btn-agro:hover,
+.btn:hover {
+  background-color: var(--verde-hover);
+  transform: translateY(-2px);
+}
+
+/* ==================== TABLAS (UBICACIÓN Y CONTACTO) ==================== */
+.tabla-contenedor {
+  width: 100%;
+  overflow-x: auto;
+  background-color: var(--blanco);
+  border-radius: 12px;
+  border: 1px solid var(--borde);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.04);
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  text-align: left;
+}
+
+th, td {
+  padding: 16px 20px;
+  border-bottom: 1px solid var(--borde);
+}
+
+th {
+  background-color: var(--azul-express);
+  color: var(--blanco);
+  font-weight: 700;
+  font-family: 'Poppins', 'Segoe UI', Arial, sans-serif;
+}
+
+tbody tr:last-child td {
+  border-bottom: none;
+}
+
+tbody tr:hover {
+  background-color: #f1f5f9;
+}
+
+/* ==================== FORMULARIOS ==================== */
+form fieldset {
+  border: 1px solid var(--borde);
+  border-radius: 12px;
+  padding: 24px;
+  background-color: var(--blanco);
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+form label {
+  display: block;
+  margin-top: 14px;
+  font-weight: 600;
+  font-size: 0.9rem;
+}
+
+form input,
+form select,
+form textarea {
+  width: 100%;
+  padding: 10px;
+  margin-top: 6px;
+  border-radius: 6px;
+  border: 1px solid var(--borde);
+  font-family: inherit;
+}
+
+form input[type="submit"] {
+  margin-top: 20px;
+  background-color: var(--amarillo-express);
+  color: var(--texto-oscuro);
+  font-weight: 700;
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+form input[type="submit"]:hover {
+  background-color: var(--amarillo-hover);
+}
+
+/* ==================== PIE DE PÁGINA ==================== */
+footer {
+  background-color: var(--azul-express);
+  color: var(--blanco);
+  text-align: center;
+  padding: 25px;
+  margin-top: 60px;
+  font-size: 0.9rem;
+}
+
+/* ==================== RESPONSIVO ==================== */
+@media (max-width: 768px) {
+  header {
+    flex-direction: column;
+    height: auto;
+    padding: 16px;
+    gap: 12px;
+  }
+
+  header nav ul {
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 8px;
+  }
+
+  .dropdown-menu {
+    position: static;
+    border-top: none;
+    box-shadow: none;
+    background-color: rgba(255, 255, 255, 0.05);
+    border-radius: 6px;
+  }
+
+  .hero h1,
+  .service-hero h1 {
+    font-size: 1.8rem;
+  }
+
+  main {
+    margin: 20px auto;
+  }
+}

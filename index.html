@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="LogísticaExpress Perú - Envíos, encomiendas y mensajería en Tarapoto y la Amazonía.">
+  <title>Inicio — LogísticaExpress Perú</title>
+  <link rel="stylesheet" href="CSS/inicio.css">
+</head>
+<body>
+
+  <!-- ENCABEZADO Y NAVEGACIÓN -->
+  <header>
+    <a href="index.html" class="logo">LogísticaExpress</a>
+    <nav>
+      <ul>
+        <li><a href="index.html" class="active">Inicio</a></li>
+        <li><a href="HTML/servicios.html">Servicios</a></li>
+        <li class="dropdown">
+          <a href="HTML/requisitos.html">Cómo funciona</a>
+          <ul class="dropdown-menu">
+            <li><a href="HTML/requisitos.html#pasos">Pasos para enviar</a></li>
+            <li><a href="HTML/requisitos.html#requisitos">Requisitos por tipo</a></li>
+            <li><a href="HTML/requisitos.html#prohibidos">Artículos prohibidos</a></li>
+          </ul>
+        </li>
+        <li><a href="HTML/formulario.html">Cotizador</a></li>
+        <li><a href="HTML/contacto.html">Ubicación</a></li>
+        <!-- BOTÓN DE INICIAR SESIÓN AGREGADO -->
+        <li><a href="HTML/login.html" class="btn-login-nav">Iniciar Sesión</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+    <!-- HERO SECTION -->
+    <section class="hero">
+      <div class="hero-overlay"></div>
+      <div class="hero-content">
+        <span class="badge">Envíos Nacionales</span>
+        <h1>Transporte y Logística Sin Complicaciones</h1>
+        <p>Conectamos la región San Martín con todo el Perú de forma rápida y segura.</p>
+
+        <!-- SEGUIMIENTO Y RASTREO -->
+        <div class="tracking-container">
+          <div class="rastreo-header">
+            <svg class="svg-paquete-animado" viewBox="0 0 64 64" width="64" height="64">
+              <path fill="#ffb800" d="M32 4L4 18v28l28 14 28-14V18L32 4z"/>
+              <path fill="#e0a200" d="M32 4v28l28-14L32 4z"/>
+              <path fill="#0d2c6c" d="M4 18l28 14v28L4 46V18z"/>
+            </svg>
+            <h3>Seguimiento de envío en tiempo real</h3>
+          </div>
+
+          <!-- Línea de tiempo -->
+          <div class="timeline">
+            <div class="timeline-bar"></div>
+            <div class="timeline-step active">
+              <div class="step-dot"></div>
+              <span class="step-label">Recibido</span>
+            </div>
+            <div class="timeline-step active">
+              <div class="step-dot"></div>
+              <span class="step-label">Tránsito</span>
+            </div>
+            <div class="timeline-step active">
+              <div class="step-dot"></div>
+              <span class="step-label">Reparto</span>
+            </div>
+            <div class="timeline-step">
+              <div class="step-dot"></div>
+              <span class="step-label">Entregado</span>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ESTADÍSTICAS -->
+    <section class="stats-bar">
+      <div class="stat-item">
+        <h2>+15,000</h2>
+        <p>Envíos entregados</p>
+      </div>
+      <div class="stat-item">
+        <h2>99.8%</h2>
+        <p>Entregas a tiempo</p>
+      </div>
+      <div class="stat-item">
+        <h2>24/7</h2>
+        <p>Monitoreo GPS</p>
+      </div>
+      <div class="stat-item">
+        <h2>12+</h2>
+        <p>Rutas en San Martín</p>
+      </div>
+    </section>
+
+    <!-- CATÁLOGO DE SERVICIOS -->
+    <section class="resumen-inicio" id="servicios">
+      <div class="section-title">
+        <h2>Servicios de transporte y encomiendas</h2>
+        <p>Conectando la Región San Martín con Lima y las principales ciudades del país.</p>
+      </div>
+
+      <div class="resumen-grid">
+        <article class="resumen-card">
+          <div class="card-img-wrapper">
+            <img src="aereo.jpg" alt="Carga Aérea Express">
+            <span class="card-badge">Menos de 24 hrs</span>
+          </div>
+          <div class="resumen-card-body">
+            <h3>Express Aéreo</h3>
+            <p>Conexiones diarias directas entre Tarapoto y Lima. Ideal para documentos urgentes y muestras comerciales.</p>
+            <a href="HTML/expresoaereo.html" class="link-btn">Ver horarios →</a>
+          </div>
+        </article>
+
+        <article class="resumen-card">
+          <div class="card-img-wrapper">
+            <img src="terrestre.jpg" alt="Encomienda Terrestre">
+            <span class="card-badge">Salidas Diarias</span>
+          </div>
+          <div class="resumen-card-body">
+            <h3>Encomienda Terrestre</h3>
+            <p>Salidas diarias hacia Moyobamba, Yurimaguas, Chiclayo, Trujillo y Lima con tarifas accesibles.</p>
+            <a href="HTML/encomiendaterrestre.html" class="link-btn">Ver rutas →</a>
+          </div>
+        </article>
+
+        <article class="resumen-card">
+          <div class="card-img-wrapper">
+            <img src="agropecuario.jpg" alt="Courier Agropecuario">
+            <span class="card-badge">Especializado</span>
+          </div>
+          <div class="resumen-card-body">
+            <h3>Courier Agropecuario</h3>
+            <p>Empaque técnico y logística adaptada para emprendedores de café, cacao y productos autóctonos.</p>
+            <a href="HTML/courieragropecuario.html" class="link-btn">Ver guía →</a>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <!-- VENTAJAS / POR QUÉ ELEGIRNOS -->
+    <section class="features-section" id="beneficios">
+      <div class="section-title">
+        <h2>¿Por qué confiar en LogísticaExpress?</h2>
+        <p>Garantía, rapidez y cuidado total en cada envío.</p>
+      </div>
+
+      <div class="features-grid">
+        <div class="feature-box">
+          <h3>Seguridad garantizada</h3>
+          <p>Tu paquete viaja asegurado con protocolo de embalaje y precinto de seguridad.</p>
+        </div>
+        <div class="feature-box">
+          <h3>Rastreo en tiempo real</h3>
+          <p>Monitorea el estado exacto de tu encomienda desde el origen hasta el punto final.</p>
+        </div>
+        <div class="feature-box">
+          <h3>Sedes cercanas</h3>
+          <p>Múltiples oficinas estratégicas para recojo y envío directo en San Martín.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- TESTIMONIOS -->
+    <section class="testimonials-section" id="testimonios">
+      <div class="section-title">
+        <h2>Lo que dicen nuestros clientes</h2>
+      </div>
+
+      <div class="testimonials-grid">
+        <div class="testimonial-card">
+          <p>"Enviamos muestras de café orgánico desde Tarapoto a Lima semanalmente. La rapidez del servicio aéreo es impecable."</p>
+          <h4>— Cooperativa Agrícola San Martín</h4>
+        </div>
+        <div class="testimonial-card">
+          <p>"Excelente atención en la oficina central. Mis encomiendas familiares llegan siempre a tiempo."</p>
+          <h4>— María Fernández</h4>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- PIE DE PÁGINA -->
+  <footer>
+    <div class="footer-container">
+      <div class="footer-col">
+        <h3>LogísticaExpress</h3>
+        <p>Tu socio logístico de confianza en la región San Martín y todo el Perú.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Enlaces rápidos</h4>
+        <ul>
+          <li><a href="index.html">Inicio</a></li>
+          <li><a href="HTML/servicios.html">Servicios</a></li>
+          <li><a href="HTML/requisitos.html">Requisitos</a></li>
+          <li><a href="HTML/contacto.html">Contacto</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Sede Principal</h4>
+        <p>Jr. San Martín 450, Tarapoto</p>
+        <p>Teléfono: (042) 55-0192</p>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; 2026 LogísticaExpress Envíos Perú. Todos los derechos reservados.</p>
+    </div>
+  </footer>
+
+</body>
+</html>

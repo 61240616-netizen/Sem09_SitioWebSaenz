@@ -1,0 +1,129 @@
+/* css/caja.css — módulo del cajero */
+[hidden] { display: none !important; }
+
+.caja-contenedor {
+  max-width: 1150px;
+  margin: 0 auto;
+  padding: 32px 20px 20px;
+}
+
+.caja-titulo { margin-bottom: 18px; }
+.caja-titulo h1 { color: var(--azul-express); }
+.caja-usuario { color: var(--texto-mutado); font-size: 0.92rem; }
+.caja-usuario strong { color: var(--texto-oscuro); }
+
+.caja-seccion {
+  background: var(--blanco);
+  border: 1px solid var(--borde);
+  border-radius: 14px;
+  padding: 22px 24px;
+  margin-bottom: 22px;
+  box-shadow: var(--sombra);
+}
+
+.caja-seccion h2 { color: var(--azul-express); font-size: 1.2rem; margin-bottom: 14px; }
+
+.caja-contenedor label { display: block; font-size: 0.88rem; font-weight: 600; margin-bottom: 6px; }
+
+.caja-contenedor input[type="search"],
+.caja-contenedor input[type="date"],
+.caja-contenedor input[type="number"],
+.caja-contenedor input[type="text"],
+.caja-contenedor input:not([type]),
+.caja-contenedor select {
+  padding: 10px 12px;
+  border: 1.5px solid #cbd5e1;
+  border-radius: 8px;
+  font-size: 0.95rem;
+  font-family: inherit;
+  background: var(--gris-fondo);
+}
+
+.caja-contenedor :focus-visible,
+dialog :focus-visible { outline: 3px solid rgba(13, 44, 108, 0.35); outline-offset: 2px; }
+
+.buscador { margin-bottom: 16px; }
+.buscador-fila { display: flex; gap: 10px; }
+.buscador-fila input { flex: 1; }
+
+.caja-contenedor button {
+  padding: 10px 18px;
+  border: none;
+  border-radius: 8px;
+  background: var(--azul-express);
+  color: var(--blanco);
+  font-weight: 700;
+  font-family: inherit;
+  font-size: 0.9rem;
+  cursor: pointer;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+.caja-contenedor button:hover:not(:disabled) { background: var(--amarillo-express); color: var(--azul-express); }
+.caja-contenedor button:disabled { background: #94a3b8; cursor: not-allowed; }
+
+.filtros { display: flex; align-items: center; gap: 14px; flex-wrap: wrap; margin-bottom: 14px; }
+.filtros label { margin: 0; }
+.filtros .check { display: flex; align-items: center; gap: 6px; }
+
+.tabla-wrapper { overflow-x: auto; border: 1px solid var(--borde); border-radius: 10px; }
+table { width: 100%; border-collapse: collapse; text-align: left; }
+caption { text-align: left; padding: 10px 14px; font-weight: 700; color: var(--texto-mutado); font-size: 0.85rem; }
+thead { background: var(--azul-express); color: var(--blanco); }
+th, td { padding: 11px 14px; border-bottom: 1px solid var(--borde); font-size: 0.88rem; }
+tbody tr:hover { background: #f1f5f9; }
+.fila-rechazada { background: #fef2f2; }
+.fila-rechazada td { color: #991b1b; }
+
+.total-dia { margin-top: 14px; font-size: 1.05rem; }
+.total-dia strong { font-size: 1.4rem; color: var(--azul-express); }
+
+.aviso-nuevos:not(:empty) {
+  background: #fef9c3; color: #854d0e; padding: 10px 14px; border-radius: 8px; margin-bottom: 12px; font-weight: 600;
+}
+
+.aviso-cobro:not(:empty) {
+  background: #dcfce7; color: #166534; padding: 12px 16px; border-radius: 10px; margin-bottom: 18px; font-weight: 600;
+}
+.aviso-cobro a { color: var(--azul-express); font-weight: 800; margin-left: 8px; }
+
+/* Ventana de cobro */
+dialog {
+  border: none;
+  border-radius: 14px;
+  padding: 26px 28px;
+  width: min(460px, 92vw);
+  box-shadow: 0 25px 60px rgba(0, 0, 0, 0.35);
+}
+dialog::backdrop { background: rgba(7, 28, 72, 0.55); }
+dialog h2 { color: var(--azul-express); margin-bottom: 8px; }
+dialog label { display: block; font-size: 0.88rem; font-weight: 600; margin: 14px 0 6px; }
+dialog input, dialog select {
+  width: 100%;
+  padding: 10px 12px;
+  border: 1.5px solid #cbd5e1;
+  border-radius: 8px;
+  font-size: 0.95rem;
+  font-family: inherit;
+}
+dialog .ayuda { font-size: 0.78rem; color: var(--texto-mutado); margin-top: 4px; }
+dialog .ayuda.cambio { color: #b45309; font-weight: 700; }
+
+.datos-paquete {
+  display: grid;
+  grid-template-columns: 120px 1fr;
+  gap: 4px 10px;
+  margin: 10px 0 4px;
+  padding: 10px 12px;
+  background: var(--azul-claro);
+  border-radius: 8px;
+  font-size: 0.88rem;
+}
+.datos-paquete dt { font-weight: 700; color: var(--texto-mutado); }
+
+.dialogo-botones { display: flex; gap: 10px; margin-top: 20px; }
+.dialogo-botones button {
+  flex: 1; padding: 12px; border: none; border-radius: 8px; font-weight: 700; font-family: inherit; cursor: pointer;
+  background: #e2e8f0; color: var(--texto-oscuro);
+}
+.dialogo-botones .primario { background: var(--azul-express); color: var(--blanco); }
+.dialogo-botones .primario:disabled { background: #94a3b8; cursor: not-allowed; }

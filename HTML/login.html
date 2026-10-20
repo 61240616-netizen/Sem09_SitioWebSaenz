@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Iniciar Sesión — LogísticaExpress Perú</title>
+
+  <!-- 1. Enlazar estilos globales (Header, Footer, Colores, Fuentes) -->
+  <link rel="stylesheet" href="../CSS/inicio.css">
+
+  <!-- 2. Enlazar estilos específicos del Formulario/Login -->
+  <link rel="stylesheet" href="../CSS/login.css">
+</head>
+<body>
+
+  <!-- ENCABEZADO Y NAVEGACIÓN -->
+  <header>
+    <a href="../index.html" class="logo">LogísticaExpress</a>
+    <nav>
+      <ul>
+        <li><a href="../index.html">Inicio</a></li>
+        <li><a href="servicios.html">Servicios</a></li>
+        <li class="dropdown">
+          <a href="requisitos.html">Cómo funciona</a>
+          <ul class="dropdown-menu">
+            <li><a href="requisitos.html#pasos">Pasos para enviar</a></li>
+            <li><a href="requisitos.html#requisitos">Requisitos por tipo</a></li>
+            <li><a href="requisitos.html#prohibidos">Artículos prohibidos</a></li>
+          </ul>
+        </li>
+        <li><a href="formulario.html">Cotizador</a></li>
+        <li><a href="contacto.html">Ubicación</a></li>
+        <li><a href="login.html" class="active">Iniciar Sesión</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <!-- SECCIÓN DE LOGIN / REGISTRO -->
+  <main class="auth-section">
+    <div class="auth-card">
+      
+      <!-- Pestañas para cambiar entre Login y Registro -->
+      <div class="tabs-auth">
+        <button id="tab-login" class="tab-btn activa">Iniciar Sesión</button>
+        <button id="tab-registro" class="tab-btn">Crear Cuenta</button>
+      </div>
+
+      <div id="mensaje-auth" class="mensaje-alerta" role="alert" aria-live="polite"></div>
+
+      <!-- Formulario de Iniciar Sesión -->
+      <form id="form-login" class="form-auth">
+        <h2>Bienvenido de nuevo</h2>
+        <div class="campo">
+          <label for="login-correo">Correo electrónico:</label>
+          <input type="email" id="login-correo" required placeholder="correo@ejemplo.com">
+        </div>
+        <div class="campo">
+          <label for="login-contrasena">Contraseña:</label>
+          <input type="password" id="login-contrasena" required placeholder="••••••••">
+        </div>
+        <button type="submit" class="btn-auth">Ingresar</button>
+      </form>
+
+      <!-- Formulario de Registro (Oculto por defecto) -->
+      <form id="form-registro" class="form-auth" style="display: none;">
+        <h2>Crear una cuenta</h2>
+        <div class="campo">
+          <label for="reg-nombre">Nombre completo:</label>
+          <input type="text" id="reg-nombre" required placeholder="Ej. Juan Pérez">
+        </div>
+        <div class="campo">
+          <label for="reg-correo">Correo electrónico:</label>
+          <input type="email" id="reg-correo" required placeholder="correo@ejemplo.com">
+        </div>
+        <div class="campo">
+          <label for="reg-contrasena">Contraseña:</label>
+          <input type="password" id="reg-contrasena" required placeholder="••••••••">
+        </div>
+        <button type="submit" class="btn-auth">Registrarme</button>
+      </form>
+
+    </div>
+  </main>
+
+
+  <!-- PANTALLA DE CARGA: carro avanzando mientras se inicia sesión -->
+  <div id="pantalla-carga" class="pantalla-carga" role="status" aria-live="polite" hidden>
+    <div class="carga-contenido">
+      <div class="carga-escena">
+        <div class="carga-auto" id="carga-auto"></div>
+        <div class="carga-ruta" aria-hidden="true"><span></span></div>
+      </div>
+      <p class="carga-linea">
+        <span id="carga-texto">Iniciando sesión</span><span class="carga-puntos" aria-hidden="true"><i>.</i><i>.</i><i>.</i></span>
+      </p>
+    </div>
+  </div>
+
+  <!-- PIE DE PÁGINA -->
+  <footer>
+    <div class="footer-container">
+      <div class="footer-col">
+        <h3>LogísticaExpress</h3>
+        <p>Tu socio logístico de confianza en la región San Martín y todo el Perú.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Enlaces rápidos</h4>
+        <ul>
+          <li><a href="../index.html">Inicio</a></li>
+          <li><a href="servicios.html">Servicios</a></li>
+          <li><a href="requisitos.html">Requisitos</a></li>
+          <li><a href="contacto.html">Contacto</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Sede Principal</h4>
+        <p>Jr. San Martín 450, Tarapoto</p>
+        <p>Teléfono: (042) 55-0192</p>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; 2026 LogísticaExpress Envíos Perú. Todos los derechos reservados.</p>
+    </div>
+  </footer>
+<script type="module" src="../JS/auth/login.js"></script>
+</body>
+</html>

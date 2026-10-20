@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Comprobante y guía de envío — LogísticaExpress</title>
+  <link rel="stylesheet" href="../CSS/inicio.css">
+  <link rel="stylesheet" href="../CSS/comprobante.css">
+</head>
+<body>
+  <header>
+    <a href="../index.html" class="logo">LogísticaExpress</a>
+    <nav aria-label="Navegación principal">
+      <ul>
+        <li><a href="../index.html">Inicio</a></li>
+        <li><a href="#" id="enlace-volver-nav">Volver</a></li>
+        <li><a href="#" id="btn-cerrar-sesion" class="btn-login-nav">Cerrar Sesión</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main class="comprobante-contenedor">
+    <h1>Constancia de pago y guía de envío</h1>
+    <section id="comprobante" class="hoja" aria-live="polite">Cargando comprobante...</section>
+    <div class="acciones">
+      <button type="button" id="imprimir" disabled>Imprimir guía</button>
+      <a href="consulta.html" id="enlace-volver">Volver</a>
+    </div>
+  </main>
+
+  <script type="module" src="../JS/comprobante/comprobante.js"></script>
+</body>
+</html>

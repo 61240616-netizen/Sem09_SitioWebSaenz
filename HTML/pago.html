@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pagar envío — LogísticaExpress</title>
+  <link rel="stylesheet" href="../CSS/inicio.css">
+  <link rel="stylesheet" href="../CSS/pago.css">
+</head>
+<body>
+  <header>
+    <a href="../index.html" class="logo">LogísticaExpress</a>
+    <nav aria-label="Navegación principal">
+      <ul>
+        <li><a href="../index.html">Inicio</a></li>
+        <li><a href="formulario.html">Cotizador</a></li>
+        <li><a href="consulta.html">Mis Cotizaciones</a></li>
+        <li><a href="pago.html" class="active" aria-current="page">Pagar</a></li>
+        <li><a href="#" id="btn-cerrar-sesion" class="btn-login-nav">Cerrar Sesión</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main class="pago-contenedor">
+    <h1>Pago en línea</h1>
+    <p class="aviso-simulacion">Simulación académica: usa las tarjetas y billeteras de prueba. Nunca ingreses datos reales.</p>
+
+    <section class="tarjeta-pago" aria-labelledby="t-resumen">
+      <h2 id="t-resumen">Resumen</h2>
+      <label for="registro">Solicitud a pagar</label>
+      <select id="registro" name="registro"></select>
+      <p class="total-pago">Total a pagar: <strong id="resumen-monto">—</strong></p>
+    </section>
+
+    <div id="panel-metodos">
+      <fieldset class="tarjeta-pago metodos">
+        <legend>Método de pago</legend>
+        <label class="opcion-metodo"><input type="radio" name="metodo" value="tarjeta" checked> Tarjeta de débito o crédito</label>
+        <label class="opcion-metodo"><input type="radio" name="metodo" value="billetera"> Billetera electrónica</label>
+      </fieldset>
+
+      <form id="form-tarjeta" class="tarjeta-pago form-pago" novalidate>
+        <label for="numero">Número de tarjeta</label>
+        <input id="numero" name="numero" inputmode="numeric" autocomplete="cc-number" maxlength="23"
+               required aria-describedby="marca-detectada error-numero" placeholder="4111 1111 1111 1111">
+        <span id="marca-detectada" class="marca"></span>
+        <span id="error-numero" class="error"></span>
+
+        <div class="fila-doble">
+          <div>
+            <label for="vencimiento">Vencimiento (MM/AA)</label>
+            <input id="vencimiento" name="vencimiento" inputmode="numeric" autocomplete="cc-exp" maxlength="5"
+                   placeholder="MM/AA" required aria-describedby="error-vencimiento">
+            <span id="error-vencimiento" class="error"></span>
+          </div>
+          <div>
+            <label for="cvv">CVV</label>
+            <input id="cvv" name="cvv" type="password" inputmode="numeric" autocomplete="cc-csc" maxlength="4"
+                   required aria-describedby="error-cvv">
+            <span id="error-cvv" class="error"></span>
+          </div>
+        </div>
+
+        <label for="titular">Nombre del titular</label>
+        <input id="titular" name="titular" autocomplete="cc-name" required aria-describedby="error-titular">
+        <span id="error-titular" class="error"></span>
+
+        <button type="submit" class="btn-pagar">Pagar con tarjeta</button>
+      </form>
+
+      <form id="form-billetera" class="tarjeta-pago form-pago" novalidate hidden>
+        <label for="proveedor">Billetera</label>
+        <select id="proveedor" name="proveedor">
+          <option value="andipay">AndiPay</option>
+          <option value="pagomovil">PagoMóvil</option>
+        </select>
+
+        <label for="celular">Celular afiliado</label>
+        <input id="celular" name="celular" inputmode="numeric" autocomplete="tel-national" maxlength="9"
+               required aria-describedby="error-celular" placeholder="987654321">
+        <span id="error-celular" class="error"></span>
+
+        <label for="codigo">Código de aprobación (6 dígitos que muestra tu billetera)</label>
+        <input id="codigo" name="codigo" inputmode="numeric" autocomplete="one-time-code" maxlength="6"
+               required aria-describedby="error-codigo">
+        <span id="error-codigo" class="error"></span>
+
+        <button type="submit" class="btn-pagar">Pagar con billetera</button>
+      </form>
+    </div>
+
+    <p id="mensaje-pago" role="status" aria-live="polite"></p>
+  </main>
+
+  <footer>
+    <div class="footer-bottom">
+      <p>&copy; 2026 LogísticaExpress — Proyecto de Diseño Web.</p>
+    </div>
+  </footer>
+
+  <script type="module" src="../JS/pago/pago.js"></script>
+</body>
+</html>

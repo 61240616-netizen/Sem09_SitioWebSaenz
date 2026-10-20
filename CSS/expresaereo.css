@@ -1,0 +1,368 @@
+/* ==================== VARIABLES GLOBAL Y RESET ==================== */
+:root {
+  --amarillo-express: #ffb800;
+  --amarillo-hover: #e0a200;
+  --azul-express: #0d2c6c;
+  --azul-hover: #143d8d;
+  --azul-claro: #eef4ff;
+  --verde-exito: #10b981;
+  --gris-fondo: #f8fafc;
+  --blanco: #ffffff;
+  --texto-oscuro: #0f172a;
+  --texto-mutado: #64748b;
+  --borde: #e2e8f0;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: 'Plus Jakarta Sans', 'Segoe UI', Arial, sans-serif;
+  background-color: var(--gris-fondo);
+  color: var(--texto-oscuro);
+  line-height: 1.6;
+}
+
+h1, h2, h3, h4 {
+  font-family: 'Poppins', 'Segoe UI', Arial, sans-serif;
+}
+
+/* ==================== ENCABEZADO Y NAVEGACIÓN ==================== */
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: var(--azul-express);
+  padding: 0 5%;
+  height: 75px;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.logo {
+  font-size: 1.5rem;
+  font-weight: 800;
+  color: var(--blanco);
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.logo i, 
+.logo span {
+  color: var(--amarillo-express);
+}
+
+header nav ul {
+  list-style: none;
+  display: flex;
+  gap: 12px;
+  align-items: center;
+}
+
+header nav a {
+  color: var(--blanco);
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 0.9rem;
+  padding: 10px 16px;
+  border-radius: 8px;
+  transition: background 0.3s ease, color 0.3s ease;
+}
+
+header nav a:hover,
+header nav a.active {
+  background: rgba(255, 255, 255, 0.1);
+  color: var(--amarillo-express);
+}
+
+/* Menú Desplegable (Dropdown) */
+.dropdown {
+  position: relative;
+}
+
+.dropdown-btn {
+  cursor: pointer;
+}
+
+.dropdown-menu {
+  display: none;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  background-color: var(--azul-express);
+  min-width: 230px;
+  border-top: 3px solid var(--amarillo-express);
+  border-radius: 0 0 10px 10px;
+  list-style: none;
+  padding: 6px 0;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
+}
+
+.dropdown:hover .dropdown-menu {
+  display: block;
+}
+
+.dropdown-menu li {
+  width: 100%;
+}
+
+.dropdown-menu a {
+  display: block;
+  padding: 10px 16px;
+  border-radius: 0;
+  font-weight: 500;
+}
+
+.dropdown-menu a:hover {
+  background-color: var(--azul-hover);
+  color: var(--amarillo-express);
+}
+
+/* ==================== ESTRUCTURA PRINCIPAL ==================== */
+main {
+  max-width: 1100px;
+  margin: 40px auto;
+  padding: 0 20px;
+}
+
+/* Héroe de Servicio */
+.service-hero {
+  text-align: center;
+  margin-bottom: 40px;
+}
+
+.service-hero h1 {
+  color: var(--azul-express);
+  font-size: 2.2rem;
+  margin: 10px 0;
+}
+
+.service-hero p {
+  color: var(--texto-mutado);
+  max-width: 700px;
+  margin: 0 auto;
+}
+
+/* Etiquetas (Badges) */
+.badge {
+  display: inline-block;
+  background-color: var(--azul-claro);
+  color: var(--azul-express);
+  padding: 6px 16px;
+  border-radius: 20px;
+  font-weight: 700;
+  font-size: 0.85rem;
+  text-transform: uppercase;
+}
+
+/* Bloques de Información */
+.info-block {
+  background-color: var(--blanco);
+  padding: 30px;
+  border-radius: 16px;
+  border: 1px solid var(--borde);
+  margin-bottom: 40px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+}
+
+.info-block h2 {
+  color: var(--azul-express);
+  font-size: 1.4rem;
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+/* ==================== TABLAS (HORARIOS Y RUTAS) ==================== */
+.table-container {
+  width: 100%;
+  overflow-x: auto;
+  background-color: var(--blanco);
+  border-radius: 12px;
+  border: 1px solid var(--borde);
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  text-align: left;
+}
+
+th, td {
+  padding: 14px 16px;
+  border-bottom: 1px solid var(--borde);
+}
+
+th {
+  background-color: var(--azul-express);
+  color: var(--blanco);
+  font-weight: 700;
+  font-family: 'Poppins', 'Segoe UI', Arial, sans-serif;
+}
+
+tbody tr:last-child td {
+  border-bottom: none;
+}
+
+tbody tr:hover {
+  background-color: #f1f5f9;
+}
+
+/* ==================== SECCIÓN DE PRECIOS ==================== */
+.buy-section {
+  text-align: center;
+}
+
+.buy-section h2 {
+  color: var(--azul-express);
+  font-size: 1.5rem;
+  margin-bottom: 8px;
+}
+
+.buy-section p {
+  color: var(--texto-mutado);
+  margin-bottom: 25px;
+}
+
+.pricing-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 24px;
+}
+
+.price-card {
+  background-color: var(--blanco);
+  border: 1px solid var(--borde);
+  border-radius: 16px;
+  padding: 30px;
+  text-align: center;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.03);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.price-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+}
+
+.price-card.featured {
+  border: 2px solid var(--amarillo-express);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+}
+
+.pop-tag {
+  position: absolute;
+  top: -12px;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: var(--amarillo-express);
+  color: var(--azul-express);
+  font-weight: 800;
+  font-size: 0.75rem;
+  padding: 4px 12px;
+  border-radius: 20px;
+  text-transform: uppercase;
+}
+
+.price {
+  font-size: 2rem;
+  font-weight: 800;
+  color: var(--azul-express);
+  margin: 15px 0;
+}
+
+.price span {
+  font-size: 0.9rem;
+  color: var(--texto-mutado);
+  font-weight: 500;
+}
+
+.price-card ul {
+  list-style: none;
+  margin: 20px 0;
+  text-align: left;
+}
+
+.price-card li {
+  margin-bottom: 10px;
+  font-size: 0.9rem;
+  display: flex;
+  align-items: center;
+}
+
+.price-card li i {
+  color: var(--verde-exito);
+  margin-right: 8px;
+}
+
+.btn-buy {
+  display: block;
+  background-color: var(--amarillo-express);
+  color: var(--azul-express);
+  font-weight: 800;
+  text-decoration: none;
+  padding: 12px;
+  border-radius: 8px;
+  transition: background-color 0.2s ease, transform 0.2s ease;
+}
+
+.btn-buy:hover {
+  background-color: var(--amarillo-hover);
+  transform: translateY(-2px);
+}
+
+/* ==================== PIE DE PÁGINA ==================== */
+footer {
+  background-color: var(--azul-express);
+  color: var(--blanco);
+  text-align: center;
+  padding: 25px;
+  margin-top: 60px;
+  font-size: 0.9rem;
+}
+
+/* ==================== RESPONSIVO ==================== */
+@media (max-width: 768px) {
+  header {
+    flex-direction: column;
+    height: auto;
+    padding: 16px;
+    gap: 12px;
+  }
+
+  header nav ul {
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 8px;
+  }
+
+  .dropdown-menu {
+    position: static;
+    border-top: none;
+    box-shadow: none;
+    background-color: rgba(255, 255, 255, 0.05);
+    border-radius: 6px;
+  }
+
+  .service-hero h1 {
+    font-size: 1.8rem;
+  }
+
+  main {
+    margin: 20px auto;
+  }
+}

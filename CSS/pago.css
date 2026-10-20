@@ -1,0 +1,111 @@
+/* css/pago.css — pasarela de pagos del cliente */
+.pago-contenedor {
+  max-width: 640px;
+  margin: 0 auto;
+  padding: 40px 20px 20px;
+}
+
+.pago-contenedor h1 {
+  color: var(--azul-express);
+  text-align: center;
+  margin-bottom: 8px;
+}
+
+.aviso-simulacion {
+  text-align: center;
+  font-size: 0.85rem;
+  color: var(--texto-mutado);
+  margin-bottom: 24px;
+}
+
+.tarjeta-pago {
+  background: var(--blanco);
+  border: 1px solid var(--borde);
+  border-radius: 14px;
+  padding: 22px 24px;
+  margin-bottom: 18px;
+  box-shadow: var(--sombra);
+}
+
+.tarjeta-pago h2, .tarjeta-pago legend {
+  color: var(--azul-express);
+  font-size: 1.1rem;
+  margin-bottom: 12px;
+}
+
+.tarjeta-pago legend { padding: 0 6px; font-weight: 700; }
+
+.pago-contenedor label {
+  display: block;
+  font-size: 0.88rem;
+  font-weight: 600;
+  margin: 14px 0 6px;
+}
+
+.pago-contenedor label:first-child { margin-top: 0; }
+
+.pago-contenedor input[type="text"],
+.pago-contenedor input:not([type]),
+.pago-contenedor input[type="password"],
+.pago-contenedor select {
+  width: 100%;
+  padding: 12px 14px;
+  border: 1.5px solid #cbd5e1;
+  border-radius: 8px;
+  font-size: 0.95rem;
+  font-family: inherit;
+  background: var(--gris-fondo);
+}
+
+.pago-contenedor input:focus-visible,
+.pago-contenedor select:focus-visible,
+.pago-contenedor button:focus-visible {
+  outline: 3px solid rgba(13, 44, 108, 0.35);
+  outline-offset: 2px;
+}
+
+.pago-contenedor input[aria-invalid="true"] { border-color: #dc2626; }
+
+.metodos { border: 1px solid var(--borde); }
+.pago-contenedor .opcion-metodo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin: 8px 0;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.total-pago { margin-top: 14px; font-size: 1.05rem; }
+.total-pago strong { font-size: 1.5rem; color: var(--azul-express); }
+
+.fila-doble { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+
+.error { display: block; min-height: 1.2em; margin-top: 4px; font-size: 0.82rem; font-weight: 600; color: #b91c1c; }
+.marca { display: block; margin-top: 4px; font-size: 0.85rem; font-weight: 700; color: var(--azul-express); }
+
+.btn-pagar {
+  width: 100%;
+  margin-top: 18px;
+  padding: 14px;
+  background: var(--azul-express);
+  color: var(--blanco);
+  border: none;
+  border-radius: 10px;
+  font-size: 1rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+.btn-pagar:hover:not(:disabled) { background: var(--amarillo-express); color: var(--azul-express); }
+.btn-pagar:disabled { background: #94a3b8; cursor: not-allowed; }
+
+.mensaje { padding: 14px 16px; border-radius: 10px; font-weight: 600; }
+.mensaje:empty { display: none; }
+.mensaje--info  { background: #dbeafe; color: #1e3a8a; }
+.mensaje--exito { background: #dcfce7; color: #166534; }
+.mensaje--error { background: #fee2e2; color: #991b1b; }
+
+@media (max-width: 480px) { .fila-doble { grid-template-columns: 1fr; } }
+
+[hidden] { display: none !important; }

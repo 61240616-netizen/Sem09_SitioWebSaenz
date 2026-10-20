@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Actualizar Cotización — LogísticaExpress</title>
+  <link rel="stylesheet" href="../CSS/inicio.css">
+  <link rel="stylesheet" href="../CSS/actualizar.css">
+</head>
+<body>
+  <!-- ENCABEZADO -->
+  <header>
+    <a href="../index.html" class="logo">LogísticaExpress</a>
+    <nav>
+      <ul>
+        <li><a href="../index.html">Inicio</a></li>
+        <li><a href="servicios.html">Servicios</a></li>
+        <li><a href="#" id="enlace-volver">Volver</a></li>
+        <li><a href="#" id="btn-cerrar-sesion" class="btn-login-nav">Cerrar Sesión</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main style="display: flex; justify-content: center; padding: 40px 20px;">
+    <div class="form-card" style="width: 100%; max-width: 500px; background: white; padding: 30px; border-radius: 12px; box-shadow: 0 10px 30px rgba(0,0,0,0.1);">
+      <h2 style="color: #0d2c6c; text-align: center; margin-bottom: 20px;">Detalle de Cotización</h2>
+
+      <form id="form-actualizar">
+        <div style="margin-bottom: 15px;">
+          <label for="edit-origen" style="display: block; font-weight: bold; margin-bottom: 5px;">Origen:</label>
+          <select id="edit-origen" required style="width: 100%; padding: 10px; border: 1px solid #ccc; border-radius: 6px;"></select>
+        </div>
+
+        <div style="margin-bottom: 15px;">
+          <label for="edit-destino" style="display: block; font-weight: bold; margin-bottom: 5px;">Destino:</label>
+          <select id="edit-destino" required style="width: 100%; padding: 10px; border: 1px solid #ccc; border-radius: 6px;"></select>
+        </div>
+
+        <div style="margin-bottom: 15px;">
+          <label for="edit-peso" style="display: block; font-weight: bold; margin-bottom: 5px;">Peso real (kg):</label>
+          <input type="number" id="edit-peso" min="0.1" max="9999" step="0.1" required style="width: 100%; padding: 10px; border: 1px solid #ccc; border-radius: 6px;">
+        </div>
+
+        <div class="medidas-edit">
+          <div><label for="edit-largo">Largo (cm):</label><input type="number" id="edit-largo" min="1" max="9999" step="0.1" required></div>
+          <div><label for="edit-ancho">Ancho (cm):</label><input type="number" id="edit-ancho" min="1" max="9999" step="0.1" required></div>
+          <div><label for="edit-alto">Alto (cm):</label><input type="number" id="edit-alto" min="1" max="9999" step="0.1" required></div>
+        </div>
+
+        <p class="monto-edit">Monto: <strong id="edit-monto">S/ 0.00</strong> <span id="edit-pago"></span></p>
+        <p id="edit-error" class="edit-error" role="alert"></p>
+
+        <!-- Solo Administradores o Empleados verán este campo -->
+        <div id="div-estado" style="margin-bottom: 20px; display: none; padding-top: 15px; border-top: 1px solid #eee;">
+          <label for="edit-estado" style="display: block; font-weight: bold; margin-bottom: 5px; color: #b91c1c;">Actualizar Estado del Envío:</label>
+          <select id="edit-estado" style="width: 100%; padding: 10px; border: 2px solid #ffb800; border-radius: 6px;">
+            <option value="registrado">Registrado</option>
+            <option value="en tránsito">En tránsito</option>
+            <option value="entregado">Entregado</option>
+            <option value="cancelado">Cancelado</option>
+          </select>
+        </div>
+
+        <button type="submit" id="btn-guardar" style="width: 100%; background: #0d2c6c; color: white; border: none; padding: 12px; font-weight: bold; border-radius: 6px; cursor: pointer;">Guardar Cambios</button>
+      </form>
+    </div>
+  </main>
+
+  <script type="module" src="../JS/actualizar/actualizar.js"></script>
+</body>
+</html>

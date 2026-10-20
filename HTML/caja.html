@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Caja — LogísticaExpress</title>
+  <link rel="stylesheet" href="../CSS/inicio.css">
+  <link rel="stylesheet" href="../CSS/caja.css">
+</head>
+<body>
+  <header>
+    <a href="../index.html" class="logo">LogísticaExpress</a>
+    <nav aria-label="Navegación principal">
+      <ul>
+        <li><a href="../index.html">Inicio</a></li>
+        <li><a href="panel.html" id="nav-panel" hidden>Panel Global</a></li>
+        <li><a href="caja.html" class="active" aria-current="page">Caja</a></li>
+        <li><a href="#" id="cerrar-sesion" class="btn-login-nav">Cerrar Sesión</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main class="caja-contenedor">
+    <div class="caja-titulo">
+      <h1>Módulo de Caja</h1>
+      <p class="caja-usuario">Cajero: <strong id="nombre-cajero"></strong> · Hora de Perú: <span id="reloj-peru">--:--</span></p>
+    </div>
+
+    <p id="aviso-cobro" class="aviso-cobro" role="status" aria-live="polite"></p>
+
+    <section class="caja-seccion" aria-labelledby="t-cobro">
+      <h2 id="t-cobro">Cobro presencial</h2>
+      <form id="form-buscar" class="buscador" role="search">
+        <label for="criterio">Código de seguimiento, DNI o nombre</label>
+        <div class="buscador-fila">
+          <input id="criterio" name="criterio" type="search" autocomplete="off" placeholder="Ej. COD-10000007, 70000006 o Cliente 03">
+          <button type="submit">Buscar</button>
+        </div>
+      </form>
+      <div class="tabla-wrapper">
+        <table id="tabla-pendientes">
+          <caption>Solicitudes pendientes de pago</caption>
+          <thead>
+            <tr><th scope="col">Código</th><th scope="col">Cliente</th><th scope="col">DNI</th>
+                <th scope="col">Ruta</th><th scope="col">Monto</th><th scope="col">Acción</th></tr>
+          </thead>
+          <tbody></tbody>
+        </table>
+      </div>
+    </section>
+
+    <section class="caja-seccion" aria-labelledby="t-linea">
+      <h2 id="t-linea">Pagos recibidos por la pasarela</h2>
+      <p id="aviso-nuevos" class="aviso-nuevos" role="status" aria-live="polite"></p>
+      <div class="filtros">
+        <label for="fecha-caja">Fecha</label>
+        <input id="fecha-caja" type="date">
+        <label class="check"><input id="solo-por-verificar" type="checkbox"> Solo pendientes de verificar</label>
+      </div>
+      <div class="tabla-wrapper">
+        <table id="tabla-en-linea">
+          <caption>Operaciones en línea</caption>
+          <thead>
+            <tr><th scope="col">Hora</th><th scope="col">Operación</th><th scope="col">Solicitud</th>
+                <th scope="col">Cliente</th><th scope="col">Medio</th><th scope="col">Monto</th>
+                <th scope="col">Resultado</th><th scope="col">Verificación</th></tr>
+          </thead>
+          <tbody></tbody>
+        </table>
+      </div>
+    </section>
+
+    <section class="caja-seccion" aria-labelledby="t-resumen">
+      <h2 id="t-resumen">Resumen del día (cierre de caja)</h2>
+      <div class="tabla-wrapper">
+        <table id="tabla-resumen">
+          <thead>
+            <tr><th scope="col">Canal</th><th scope="col">Medio</th>
+                <th scope="col">Operaciones</th><th scope="col">Total</th></tr>
+          </thead>
+          <tbody></tbody>
+        </table>
+      </div>
+      <p class="total-dia">Total recaudado: <strong id="total-dia">S/ 0.00</strong></p>
+    </section>
+  </main>
+
+  <dialog id="dialogo-cobro" aria-labelledby="t-dialogo">
+    <form id="form-cobro">
+      <h2 id="t-dialogo">Registrar cobro</h2>
+      <p>Solicitud <strong id="cobro-codigo"></strong> — Total <strong id="cobro-total"></strong></p>
+
+      <dl class="datos-paquete">
+        <dt>Ruta</dt><dd id="cobro-ruta"></dd>
+        <dt>Medidas (cm)</dt><dd id="cobro-medidas"></dd>
+        <dt>Peso declarado</dt><dd id="cobro-peso-declarado"></dd>
+      </dl>
+
+      <label for="peso-verificado">Peso verificado en balanza (kg)</label>
+      <input id="peso-verificado" name="peso_verificado" type="number" min="0.01" max="9999" step="0.01" required>
+      <p class="ayuda" id="ayuda-peso">Si el peso cambia, la tarifa se recalcula.</p>
+
+      <label for="metodo-caja">Medio de pago</label>
+      <select id="metodo-caja" name="metodo">
+        <option value="efectivo">Efectivo</option>
+        <option value="pos">Tarjeta en POS</option>
+        <option value="andipay">Billetera AndiPay (QR)</option>
+        <option value="pagomovil">Billetera PagoMóvil (QR)</option>
+      </select>
+
+      <div id="campo-recibido">
+        <label for="monto-recibido">Monto recibido (S/)</label>
+        <input id="monto-recibido" name="monto_recibido" type="number" min="0" step="0.01">
+        <p>Vuelto: <output id="vuelto">S/ 0.00</output></p>
+      </div>
+
+      <div id="campo-referencia" hidden>
+        <label for="referencia">N.° de voucher u operación</label>
+        <input id="referencia" name="referencia" inputmode="numeric" maxlength="12">
+      </div>
+
+      <div class="dialogo-botones">
+        <button type="submit" class="primario">Confirmar cobro</button>
+        <button type="button" id="cancelar-cobro">Cancelar</button>
+      </div>
+    </form>
+  </dialog>
+
+  <script type="module" src="../JS/caja/caja.js"></script>
+</body>
+</html>
